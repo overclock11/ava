@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { AvalStylesComponent } from './aval-styles.component';
+import { CardComponent } from './card/card.component';
 
 
 
 @NgModule({
-  declarations: [AvalStylesComponent],
+  declarations: [CardComponent],
   imports: [
   ],
-  exports: [AvalStylesComponent]
+  exports: [CardComponent]
 })
 export class AvalStylesModule { }
