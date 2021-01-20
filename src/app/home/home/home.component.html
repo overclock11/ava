@@ -1,0 +1,53 @@
+<div class="home">
+  <div class="home__menu">
+    <ul>
+      <li>orgnaizador</li>
+      <li>orgnaizador</li>
+      <li>orgnaizador</li>
+      <li>orgnaizador</li>
+    </ul>
+  </div>
+  <div>
+    <div class="home__summary">
+      <p>1</p>
+    </div>
+    <div class="home__products">
+      <div *ngFor="let product of userProducts" class="home__product">
+        <avl-card class="home__card">
+          <avl-card-header>
+            <div class="home__content-header-icon" *ngIf="product.product.type === productTypes.fixedTermDepositCertificate; else generalHeader">
+              <i class="fas fa-piggy-bank"></i>
+            </div>
+            <ng-template #generalHeader>
+              <div class="home__content-header">
+                <div class="home__content-header-icon">
+                  <i class="fab fa-cc-visa" *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'VISA'"></i>
+                  <i class="fab fa-cc-mastercard" *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'MASTERCARD'"></i>
+                  <i class="fas fa-piggy-bank" *ngIf="product.product.type !== productTypes.creditCard"></i>
+                </div>
+                <div>
+                  <a href="" class="home__content-header-view-more">
+                    ver detalle
+                  </a>
+                  <i class="fas fa-chevron-right home__content-header-view-more-icon"></i>
+                </div>
+              </div>
+            </ng-template>
+            <h2 class="home__content-header-text">header</h2>
+            <p class="home__content-header-text">
+              nro 2398123912381023
+            </p>
+          </avl-card-header>
+
+          <avl-card-content>
+            <h3>contenido</h3>
+          </avl-card-content>
+
+          <avl-card-footer>
+            <h4>footer</h4>
+          </avl-card-footer>
+        </avl-card>
+      </div>
+    </div>
+  </div>
+</div>
