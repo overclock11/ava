@@ -23,26 +23,70 @@
     </ul>
   </section>
   <div>
-    <section id="summary" class="home__summary">
-      <div class="home__summary-buttons">
-        <h3 class="home__summary-buttons-title">Buenos días, Miguel</h3>
-        <avl-icon-button [icon]="'fas fa-user-circle'" [text]="'Perfil'"></avl-icon-button>|
-        <avl-icon-button [icon]="'far fa-bell'" [text]="'Alertas'"></avl-icon-button>|
-        <avl-icon-button [icon]="'fas fa-sign-out-alt'" [text]="'Salida segura'"></avl-icon-button>|
+    <section id="summary" class="home__summary-margin">
+      <div class="home__summary">
+        <div>
+          <h3 class="home__summary-buttons-title">Buenos días, Miguel</h3>
+        </div>
+        <div class="home__summary-buttons">
+          <avl-icon-button [icon]="'fas fa-user-circle'" [text]="'Perfil'"></avl-icon-button>
+          <span class="home__summary-button-separator">|</span>
+          <avl-icon-button [icon]="'far fa-bell'" [text]="'Alertas'"></avl-icon-button>
+          <span class="home__summary-button-separator">|</span>
+          <avl-icon-button [icon]="'fas fa-sign-out-alt'" [text]="'Salida segura'"></avl-icon-button>
+        </div>
+      </div>
+      <div>
+        Mostrar otros productos: <avl-toggle (checked)="showAnotherBanks($event)"></avl-toggle>
+      </div>
+      <div class="home__summary home__summary-finances">
+        <div>
+          <h3 class="home__summary-buttons-title">¿Como se ven tus finanzas?</h3>
+        </div>
+        <div>
+          <p>
+            <i class="fas fa-chevron-left home__summary-arrow-space"></i>
+            <span>En productos de ahorro tienes:</span>
+            {{2351000.00 | currency}}
+            <i class="fas fa-chevron-right home__summary-arrow-space"></i>
+          </p>
+          <div class="home__summary-circle-group">
+            <div class="home__summary-circle home__summary-circle--filled"></div>
+            <div class="home__summary-circle home__summary-circle--void"></div>
+            <div class="home__summary-circle home__summary-circle--void"></div>
+          </div>
+        </div>
+      </div>
+      <div class="home__summary-quantity-products">
+        <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.fixedTermDepositCertificate)">
+          CDT ({{productCounters[productTypes.fixedTermDepositCertificate]}})
+        </a>
+        <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.freeInvestmentLoan)">
+          Créditos ({{productCounters[productTypes.freeInvestmentLoan]}})
+        </a>
+        <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.creditCard)">
+          Tarjetas de crédito ({{productCounters[productTypes.creditCard]}})
+        </a>
+        <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.currentAccount)">
+          Cuentas corriente ({{productCounters[productTypes.currentAccount]}})
+        </a>
       </div>
     </section>
     <div class="home__products">
-      <div *ngFor="let product of userProducts" class="home__product">
+      <div *ngFor="let product of userProducts | bankFilter: onlyPurpleBank:productTypeFilter" class="home__product">
         <avl-card class="home__card">
           <avl-card-header class="home__card-header">
-            <div class="home__content-header-icon" *ngIf="product.product.type === productTypes.fixedTermDepositCertificate; else generalHeader">
+            <div class="home__content-header-icon"
+                 *ngIf="product.product.type === productTypes.fixedTermDepositCertificate; else generalHeader">
               <i class="fas fa-piggy-bank"></i>
             </div>
             <ng-template #generalHeader>
               <div class="home__content-header">
                 <div class="home__content-header-icon">
-                  <i class="fab fa-cc-visa" *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'VISA'"></i>
-                  <i class="fab fa-cc-mastercard" *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'MASTERCARD'"></i>
+                  <i class="fab fa-cc-visa"
+                     *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'VISA'"></i>
+                  <i class="fab fa-cc-mastercard"
+                     *ngIf="product.product.type === productTypes.creditCard && product.summary.franchise === 'MASTERCARD'"></i>
                   <i class="fas fa-piggy-bank" *ngIf="product.product.type !== productTypes.creditCard"></i>
                 </div>
                 <div>
@@ -54,8 +98,11 @@
               </div>
             </ng-template>
             <h2 class="home__content-header-text home__content-header-text--title">Crédito de libre destino</h2>
-            <p class="home__content-header-text home__content-header-text--subtitle">
+            <p class="home__content-header-text home__content-header-text--subtitle" *ngIf="product.product.type !== productTypes.creditCard">
               Nro. {{product.product.id}}
+            </p>
+            <p class="home__content-header-text home__content-header-text--subtitle" *ngIf="product.product.type === productTypes.creditCard">
+              Nro. {{product.product.id | cardMask}}
             </p>
           </avl-card-header>
 
@@ -96,8 +143,11 @@
 
           <avl-card-footer class="home__card-footer">
             <div class="ava-content--regular" *ngIf="product.product.type === productTypes.freeInvestmentLoan">
-              <div>Has pagado: {{product.summary.paid_installments}} de {{product.summary.total_installments}} cuotas</div>
-              <avl-progress-bar [percentage]="(product.summary.paid_installments/product.summary.total_installments) * 100" [height]="10" [width]="'auto'">
+              <div>Has pagado: {{product.summary.paid_installments}} de {{product.summary.total_installments}}cuotas
+              </div>
+              <avl-progress-bar
+                [percentage]="(product.summary.paid_installments/product.summary.total_installments) * 100"
+                [height]="10" [width]="'auto'">
               </avl-progress-bar>
               <br/><br/>
             </div>

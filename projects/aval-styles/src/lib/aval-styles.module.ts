@@ -3,6 +3,7 @@ import {AvlCardContentComponent, AvlCardFooterComponent, AvlCardHeaderComponent,
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import {CommonModule} from '@angular/common';
 import { IconButtonComponent } from './icon-button/icon-button.component';
+import { ToggleComponent } from './toggle/toggle.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     AvlCardContentComponent,
     AvlCardFooterComponent,
     ProgressBarComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    ToggleComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     AvlCardContentComponent,
     AvlCardFooterComponent,
     ProgressBarComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    ToggleComponent
   ]
 })
 export class AvalStylesModule {

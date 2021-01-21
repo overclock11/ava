@@ -50,7 +50,7 @@
     display: block;
   }
   &__card-content {
-    height: 140px;
+    height: 130px;
     display: block;
   }
 
@@ -90,12 +90,58 @@
     }
   }
   &__summary{
+    display: flex;
+    justify-content: space-between;
+    &-margin{
+      margin-left: 8px;
+    }
     &-buttons{
-
+      margin-top: 16px;
     }
     &-buttons-title{
       color: #333;
-      margin-left: 8px;
+    }
+    &-button-separator{
+      margin-right: 4px;
+      vertical-align: super;
+    }
+    &-arrow-space{
+      margin: 0 8px 0 8px;
+      cursor: pointer;
+    }
+    &-finances{
+      border: 1px solid #e4e4e4;
+      padding: 4px 30px;
+      margin-top: 8px;
+    }
+    &-circle-group{
+      display: flex;
+      justify-content: center;
+    }
+    &-circle{
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin: 0 3px;
+      &--filled{
+        background-color: #7b7b7b;
+        border: 1px solid #7b7b7b;
+      }
+      &--void{
+        background-color: white;
+        border: 1px solid #7b7b7b;
+      }
+    }
+
+    &-quantity-products{
+      display: flex;
+      justify-content: space-around;
+      margin: 12px 0;
+    }
+    &-quantity-item{
+      margin-right: 4px;
+      color: #38a8da;
+      cursor: pointer;
     }
   }
 
