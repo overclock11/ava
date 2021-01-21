@@ -84,7 +84,8 @@
             <div *ngIf="product.product.type === productTypes.creditCard">
 
               <div *ngIf="product.summary.franchise === 'VISA'">
-                <button style="background-color: #179bd5; width: 100%; height: 50px; border-radius: 8px; color: white"> pagar </button>
+                <div class="ava-button--blue"> PAGAR </div>
+
               </div>
 
               <div *ngIf="product.summary.franchise === 'MASTERCARD'">
