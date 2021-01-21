@@ -62,11 +62,11 @@
           <avl-card-content class="home__card-content">
 
             <div *ngIf="product.product.type === productTypes.fixedTermDepositCertificate">
-              <p>Valor invertido:</p>
-              {{product.summary.amount | currency}}
-              <p>Plazo: {{product.summary.term.count * 30}} días</p>
-              <p>Fecha de vencimiento:</p>
-              {{product.due_date | date}}
+              <div>Valor invertido:</div>
+              <div class="ava-text--currency">{{product.summary.amount | currency}}</div>
+              <p>Plazo: <b>{{product.summary.term.count * 30}} días</b></p>
+              <div>Fecha de vencimiento:</div>
+              <b>{{product.due_date | date}}</b>
             </div>
             <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
               <div>Te queda por pagar:</div>
