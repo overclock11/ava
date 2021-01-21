@@ -3,50 +3,55 @@
     <div class="home__menu-logo">
       <i class="fas fa-chart-bar"></i>
     </div>
-    <h3 class="home__menu-title">Tus productos</h3>
+    <h3 class="home__menu-title">{{'your_products' | translate}}</h3>
     <ul class="home__menu-list">
       <li class="home__menu-list-item">
-        Tu organizador
+        {{'your_organizer' | translate}}
       </li>
       <li class="home__menu-list-item">
-        Pagos
+        {{'payments' | translate}}
       </li>
       <li class="home__menu-list-item">
-        Transferencias
+        {{'transfers' | translate}}
       </li>
       <li class="home__menu-list-item">
-        Certificados
+        {{'certificates' | translate}}
       </li>
       <li class="home__menu-list-item">
-        Seguridad
+        {{'security' | translate}}
       </li>
     </ul>
+    <div class="home__menu-lang-options">
+      <a class="home__menu-lang-options-text" (click)="setLang('es')">{{'spanish'| translate}}</a>
+      <span class="home__menu-lang-options-separator">|</span>
+      <a class="home__menu-lang-options-text" (click)="setLang('en')">{{'english'| translate}}</a>
+    </div>
   </section>
   <div>
     <section id="summary" class="home__summary-margin">
       <div class="home__summary">
         <div>
-          <h3 class="home__summary-buttons-title">Buenos días, Miguel</h3>
+          <h3 class="home__summary-buttons-title">{{'good_morning' | translate}}, {{name}}</h3>
         </div>
         <div class="home__summary-buttons">
-          <avl-icon-button [icon]="'fas fa-user-circle'" [text]="'Perfil'"></avl-icon-button>
+          <avl-icon-button [icon]="'fas fa-user-circle'" [text]="'profile' | translate"></avl-icon-button>
           <span class="home__summary-button-separator">|</span>
-          <avl-icon-button [icon]="'far fa-bell'" [text]="'Alertas'"></avl-icon-button>
+          <avl-icon-button [icon]="'far fa-bell'" [text]="'alerts' | translate"></avl-icon-button>
           <span class="home__summary-button-separator">|</span>
-          <avl-icon-button [icon]="'fas fa-sign-out-alt'" [text]="'Salida segura'"></avl-icon-button>
+          <avl-icon-button [icon]="'fas fa-sign-out-alt'" [text]="'safe_exit' | translate"></avl-icon-button>
         </div>
       </div>
       <div>
-        Mostrar otros productos: <avl-toggle (checked)="showAnotherBanks($event)"></avl-toggle>
+        {{'show_another_products' | translate}}: <avl-toggle (checked)="showAnotherBanks($event)"></avl-toggle>
       </div>
       <div class="home__summary home__summary-finances">
         <div>
-          <h3 class="home__summary-buttons-title">¿Como se ven tus finanzas?</h3>
+          <h3 class="home__summary-buttons-title">{{'your_finances' | translate}}</h3>
         </div>
         <div>
           <p>
             <i class="fas fa-chevron-left home__summary-arrow-space"></i>
-            <span>En productos de ahorro tienes:</span>
+            <span>{{'savings_products' | translate}}:</span>
             {{2351000.00 | currency}}
             <i class="fas fa-chevron-right home__summary-arrow-space"></i>
           </p>
@@ -59,16 +64,16 @@
       </div>
       <div class="home__summary-quantity-products">
         <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.fixedTermDepositCertificate)">
-          CDT ({{productCounters[productTypes.fixedTermDepositCertificate]}})
+          {{'FIXED_TERM_DEPOSIT_CERTIFICATE' | translate}} ({{productCounters[productTypes.fixedTermDepositCertificate]}})
         </a>
         <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.freeInvestmentLoan)">
-          Créditos ({{productCounters[productTypes.freeInvestmentLoan]}})
+          {{'FREE_INVESTMENT_LOAN' | translate}} ({{productCounters[productTypes.freeInvestmentLoan]}})
         </a>
         <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.creditCard)">
-          Tarjetas de crédito ({{productCounters[productTypes.creditCard]}})
+          {{'CREDIT_CARD' | translate}} ({{productCounters[productTypes.creditCard]}})
         </a>
         <a class="home__summary-quantity-item" (click)="filterByProductType(productTypes.currentAccount)">
-          Cuentas corriente ({{productCounters[productTypes.currentAccount]}})
+          {{'CURRENT_ACCOUNT' | translate}} ({{productCounters[productTypes.currentAccount]}})
         </a>
       </div>
     </section>
@@ -91,51 +96,51 @@
                 </div>
                 <div>
                   <a href="" class="home__content-header-view-more">
-                    Ver detalles
+                    {{'view_detail' | translate}}
                   </a>
                   <i class="fas fa-chevron-right home__content-header-view-more-icon"></i>
                 </div>
               </div>
             </ng-template>
-            <h2 class="home__content-header-text home__content-header-text--title">Crédito de libre destino</h2>
+            <h2 class="home__content-header-text home__content-header-text--title">{{product.product.type | translate}}</h2>
             <p class="home__content-header-text home__content-header-text--subtitle" *ngIf="product.product.type !== productTypes.creditCard">
-              Nro. {{product.product.id}}
+              {{'number' | translate}} {{product.product.id}}
             </p>
             <p class="home__content-header-text home__content-header-text--subtitle" *ngIf="product.product.type === productTypes.creditCard">
-              Nro. {{product.product.id | cardMask}}
+              {{'number' | translate}} {{product.product.id | cardMask}}
             </p>
           </avl-card-header>
 
           <avl-card-content class="home__card-content">
 
             <div *ngIf="product.product.type === productTypes.fixedTermDepositCertificate">
-              <div>Valor invertido:</div>
+              <div>{{'invested_value' | translate}}:</div>
               <div class="ava-text--currency">{{product.summary.amount | currency}}</div>
-              <p>Plazo: <b>{{product.summary.term.count * 30}} días</b></p>
-              <div>Fecha de vencimiento:</div>
+              <p>{{'term' | translate}}: <b>{{product.summary.term.count * 30}} {{'days' | translate}}</b></p>
+              <div>{{'due_date' | translate}}:</div>
               <b>{{product.due_date | date}}</b>
             </div>
             <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
-              <div>Te queda por pagar:</div>
+              <div>{{'have_to_pay' | translate }}:</div>
               <div class="ava-text--currency"> {{product.summary.amount | currency}}</div>
             </div>
             <div *ngIf="product.product.type === productTypes.creditCard">
               <div *ngIf="product.summary.franchise === 'VISA'">
-                <div>Proximo pago mínimo:</div>
+                <div>{{ 'next_payment' | translate}} :</div>
                 <div class="ava-text--currency">{{product.summary.min_payment | currency}}</div>
 
-                <p>Pago total: {{product.summary.total_due}}</p>
-                <p>fecha de pago: {{product.summary.next_payment | date }}</p>
+                <p>{{'full_payment' | translate}}: {{product.summary.total_due}}</p>
+                <p>{{'payment_date' | translate}}: {{product.summary.next_payment | date }}</p>
               </div>
               <div *ngIf="product.summary.franchise === 'MASTERCARD'">
-                <p>Cupo disponible:</p>
+                <p>{{'available_space' | translate}} :</p>
                 {{product.summary.min_payment | currency}}
 
-                <p>Fecha de corte: {{ product.summary.next_payment | date }}</p>
+                <p>{{'cutoff_date' | translate}}: {{ product.summary.next_payment | date }}</p>
               </div>
             </div>
             <div *ngIf="product.product.type === productTypes.currentAccount">
-              <p>En sobregiro:</p>
+              <p>{{'in_overdraft' | translate}} :</p>
               {{product.summary.balance | currency}}
             </div>
 
@@ -143,8 +148,8 @@
 
           <avl-card-footer class="home__card-footer">
             <div class="ava-content--regular" *ngIf="product.product.type === productTypes.freeInvestmentLoan">
-              <div>Has pagado: {{product.summary.paid_installments}} de {{product.summary.total_installments}}cuotas
-              </div>
+              <p>{{'you_have_paid' | translate }} : {{product.summary.paid_installments}} {{'of' | translate}} {{product.summary.total_installments}} {{'dues' | translate}}
+              </p>
               <avl-progress-bar
                 [percentage]="(product.summary.paid_installments/product.summary.total_installments) * 100"
                 [height]="10" [width]="'auto'">
@@ -155,11 +160,11 @@
             <div *ngIf="product.product.type === productTypes.creditCard">
 
               <div *ngIf="product.summary.franchise === 'VISA'">
-                <div class="ava-button--blue"> PAGAR</div>
+                <div class="ava-button--blue"> {{'pay' | translate}}</div>
               </div>
 
               <div class="ava-content--regular" *ngIf="product.summary.franchise === 'MASTERCARD'">
-                <div>Total gastado: {{product.summary.total_due | currency}}</div>
+                <p>{{'total_spend' | translate}}: {{product.summary.total_due | currency}}</p>
                 <avl-progress-bar [percentage]="(product.summary.total_due/product.summary.credit_line) * 100"
                                   [height]="10" [width]="'auto'">
                 </avl-progress-bar>

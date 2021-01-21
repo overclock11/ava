@@ -3,6 +3,7 @@ import {FinancialProductService} from '../../rest-api/financial-product.service'
 import {IFinancialProduct} from '../../models/financial-product';
 import {ProductTypes} from '../../models/enum/product-types.enum';
 import {Bank} from '../../models/enum/bank.enum';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,13 @@ export class HomeComponent implements OnInit {
   productTypes = ProductTypes;
   productCounters = {};
   productTypeFilter = '';
+  names = ['Cristian Bonilla', 'Jairo Pinzon', 'Luis Becerra'];
+  name = '';
 
-  constructor(private financialProductService: FinancialProductService) { }
+  constructor(private financialProductService: FinancialProductService, private translate: TranslateService) { }
 
   async ngOnInit(): Promise<void> {
+    this.name = this.names[Math.floor((Math.random() * (2 + 1)))];
     this.userProducts = await this.financialProductService.getFinancialProducts().toPromise()
       .then((products) => {
         this.countProducts(products.body);
@@ -73,5 +77,8 @@ export class HomeComponent implements OnInit {
     } else {
       this.productTypeFilter = productType;
     }
+  }
+  setLang(lang: string): void{
+    this.translate.setDefaultLang(lang);
   }
 }
