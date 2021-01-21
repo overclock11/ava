@@ -69,13 +69,13 @@
               {{product.due_date | date}}
             </div>
             <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
-              <p>Te queda por pagar:</p>
-              {{product.summary.amount | currency}}
+              <div>Te queda por pagar:</div>
+              <div class="ava-text--currency"> {{product.summary.amount | currency}}</div>
             </div>
             <div *ngIf="product.product.type === productTypes.creditCard">
               <div *ngIf="product.summary.franchise === 'VISA'">
-                <p>Proximo pago minimo:</p>
-                {{product.summary.min_payment | currency}}
+                <div>Proximo pago mínimo:</div>
+                <div class="ava-text--currency">{{product.summary.min_payment | currency}}</div>
 
                 <p>Pago total: {{product.summary.total_due}}</p>
                 <p>fecha de pago: {{product.summary.next_payment | date }}</p>
