@@ -14,7 +14,7 @@
     <div class="home__products">
       <div *ngFor="let product of userProducts" class="home__product">
         <avl-card class="home__card">
-          <avl-card-header>
+          <avl-card-header class="home__card-header">
             <div class="home__content-header-icon" *ngIf="product.product.type === productTypes.fixedTermDepositCertificate; else generalHeader">
               <i class="fas fa-piggy-bank"></i>
             </div>
@@ -27,24 +27,73 @@
                 </div>
                 <div>
                   <a href="" class="home__content-header-view-more">
-                    ver detalle
+                    Ver detalles
                   </a>
                   <i class="fas fa-chevron-right home__content-header-view-more-icon"></i>
                 </div>
               </div>
             </ng-template>
-            <h2 class="home__content-header-text">header</h2>
-            <p class="home__content-header-text">
-              nro 2398123912381023
+            <h2 class="home__content-header-text home__content-header-text--title">Crédito de libre destino</h2>
+            <p class="home__content-header-text home__content-header-text--subtitle">
+              Nro. {{product.product.id}}
             </p>
           </avl-card-header>
 
-          <avl-card-content>
-            <h3>contenido</h3>
+          <avl-card-content class="home__card-content">
+
+            <div *ngIf="product.product.type === productTypes.fixedTermDepositCertificate">
+              <p>Valor invertido:</p>
+              {{product.summary.amount | currency}}
+              <p>Plazo: {{product.summary.term.count * 30}} días</p>
+              <p>Fecha de vencimiento:</p>
+              {{product.due_date | date}}
+            </div>
+            <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
+              <p>Te queda por pagar:</p>
+              {{product.summary.amount | currency}}
+            </div>
+            <div *ngIf="product.product.type === productTypes.creditCard">
+              <div *ngIf="product.summary.franchise === 'VISA'">
+                <p>Proximo pago minimo:</p>
+                {{product.summary.min_payment | currency}}
+
+                <p>Pago total: {{product.summary.total_due}}</p>
+                <p>fecha de pago: {{product.summary.next_payment | date }}</p>
+              </div>
+              <div *ngIf="product.summary.franchise === 'MASTERCARD'">
+                <p>Cupo disponible:</p>
+                {{product.summary.min_payment | currency}}
+
+                <p>Fecha de corte: {{ product.summary.next_payment | date }}</p>
+              </div>
+            </div>
+            <div *ngIf="product.product.type === productTypes.currentAccount">
+              <p>En sobregiro:</p>
+              {{product.summary.balance | currency}}
+            </div>
+
           </avl-card-content>
 
-          <avl-card-footer>
-            <h4>footer</h4>
+          <avl-card-footer class="home__card-footer">
+            <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
+              <p>Has pagado {{product.summary.paid_installments}} de {{product.summary.total_installments}} cuotas</p>
+              <avl-progress-bar [percentage]="(product.summary.paid_installments/product.summary.total_installments) * 100" [height]="10" [width]="'auto'">
+              </avl-progress-bar>
+            </div>
+
+            <div *ngIf="product.product.type === productTypes.creditCard">
+
+              <div *ngIf="product.summary.franchise === 'VISA'">
+                <button style="background-color: #179bd5; width: 100%; height: 50px; border-radius: 8px; color: white"> pagar </button>
+              </div>
+
+              <div *ngIf="product.summary.franchise === 'MASTERCARD'">
+                <p>total gastado: {{product.summary.total_due | currency}}</p>
+                <avl-progress-bar [percentage]="(product.summary.total_due/product.summary.credit_line) * 100" [height]="10" [width]="'auto'">
+                </avl-progress-bar>
+              </div>
+
+            </div>
           </avl-card-footer>
         </avl-card>
       </div>

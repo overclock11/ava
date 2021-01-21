@@ -1,0 +1,4 @@
+<div class="progress-bar blue shine" [ngStyle]="{'width': width.toString() + (width === 'auto' ? '' : 'px'), 'height': height + 'px'}">
+  <span [ngStyle]="{'width': (percentage > 100 ? 100 : percentage) + '%'}">
+  </span>
+</div>

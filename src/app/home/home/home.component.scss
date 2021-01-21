@@ -17,8 +17,13 @@
     &-text{
       margin-top: 8px;
       color: #333;
+      word-wrap: break-word;
       &--title{
-
+        margin-bottom: 0;
+        margin-top: 19px;
+      }
+      &--subtitle{
+        margin-top: 4px;
       }
     }
   }
@@ -31,12 +36,27 @@
 
   &__product {
     margin: 8px;
+    height: 370px;
     flex: 1;
   }
   &__card {
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+
+  &__card-header{
+    height: 135px;
+    display: block;
+  }
+  &__card-content {
+    height: 140px;
+    display: block;
+  }
+
+  &__card-footer{
+    height: 50px;
+    display: block;
   }
 
   &__menu{

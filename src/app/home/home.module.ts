@@ -9,7 +9,7 @@ import {AvalStylesModule} from 'aval-styles';
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    AvalStylesModule
+    AvalStylesModule,
   ]
 })
 export class HomeModule { }

@@ -1,8 +1,12 @@
 <div class="card">
-  <ng-content select="avl-card-header">
-  </ng-content>
-  <ng-content select="avl-card-content">
-  </ng-content>
-  <ng-content select="avl-card-footer">
-  </ng-content>
+  <div class="card--padding">
+    <ng-content select="avl-card-header">
+    </ng-content>
+    <ng-content select="avl-card-content">
+    </ng-content>
+  </div>
+  <div>
+    <ng-content select="avl-card-footer">
+    </ng-content>
+  </div>
 </div>

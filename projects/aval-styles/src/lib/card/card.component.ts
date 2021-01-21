@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'avl-card-header',
   template: '<ng-content></ng-content>',
+  host: {class: 'card-padding'}
 })
 export class AvlCardHeaderComponent { }
 

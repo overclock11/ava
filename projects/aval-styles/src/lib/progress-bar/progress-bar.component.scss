@@ -1,0 +1,44 @@
+.progress-bar {
+  background-color: #E0E0E0;
+  border-radius: 8px;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1s ease-in .2s;
+  background: linear-gradient(90deg, #33BFC1, #7EDBDD);
+}
+
+.green span {
+  background-color: #217D7E;
+}
+
+.shine span {
+  position: relative;
+}
+
+.shine span::after {
+  content: '';
+  opacity: .2;
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 0;
+  width: 5px;
+  background: linear-gradient(#FFFFFF, #CFF2F2, #FFFFFF);
+  transform: rotate(45deg);
+  filter: blur(2px);
+  border-radius: 8px;
+  animation: shine 2s ease-in .5s 3;
+}
+
+@keyframes shine {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%
+  }
+}
