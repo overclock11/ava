@@ -1,16 +1,36 @@
 <div class="home">
-  <div class="home__menu">
-    <ul>
-      <li>orgnaizador</li>
-      <li>orgnaizador</li>
-      <li>orgnaizador</li>
-      <li>orgnaizador</li>
-    </ul>
-  </div>
-  <div>
-    <div class="home__summary">
-      <p>1</p>
+  <section id="menu" class="home__menu">
+    <div class="home__menu-logo">
+      <i class="fas fa-chart-bar"></i>
     </div>
+    <h3 class="home__menu-title">Tus productos</h3>
+    <ul class="home__menu-list">
+      <li class="home__menu-list-item">
+        Tu organizador
+      </li>
+      <li class="home__menu-list-item">
+        Pagos
+      </li>
+      <li class="home__menu-list-item">
+        Transferencias
+      </li>
+      <li class="home__menu-list-item">
+        Certificados
+      </li>
+      <li class="home__menu-list-item">
+        Seguridad
+      </li>
+    </ul>
+  </section>
+  <div>
+    <section id="summary" class="home__summary">
+      <div class="home__summary-buttons">
+        <h3 class="home__summary-buttons-title">Buenos días, Miguel</h3>
+        <avl-icon-button [icon]="'fas fa-user-circle'" [text]="'Perfil'"></avl-icon-button>|
+        <avl-icon-button [icon]="'far fa-bell'" [text]="'Alertas'"></avl-icon-button>|
+        <avl-icon-button [icon]="'fas fa-sign-out-alt'" [text]="'Salida segura'"></avl-icon-button>|
+      </div>
+    </section>
     <div class="home__products">
       <div *ngFor="let product of userProducts" class="home__product">
         <avl-card class="home__card">
