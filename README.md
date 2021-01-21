@@ -1,27 +1,33 @@
-# Ava
+# Ava 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+Algunas cosas a destacar de la funcionalidad de aplicación:
 
-## Development server
+- Es posible filtrar los cards según el tipo de producto haciendo click sobre los nombres del los productos en la barra de resumen
+- Se pueden ocultar y mostrar los productos relacionados a otros bancos a través del toggle
+- Se puede cambiar el idioma desde la barra de menú lateral haciendo click sobre el nombre correspondiente al idioma deseado
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+---------
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Sobre la construcción de la aplicación
 
-## Build
+La aplicación se compone de modulos que contienen pipes, servicios, componentes, interfaces y enums :metal:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+- Algunos componentes visuales fueron separados en una librería (aval-styles) pensando en la 
+reutilización de ellos en esta y otras apps ya que generalmente las aplicaciones
+ empresariales suelen tener unas mismas  guias  de estilos
+- El CSS se escribió con la metodologia BEM
+- No se utilizaron frameworks de css 
+- Los componentes son modulares
+- Se usó un observable sencillo en el servicio que retorna los datos mock 
+- Se agregó un modulo de traducciones
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+---------
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Configuración para levantar la aplicación.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Instalar paquetes NPM `npm i`
+2. Generar librería `ng build aval-styles --watch`
+3. Levantar servidor de desarrollo ` ng serve `
