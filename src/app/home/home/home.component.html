@@ -75,23 +75,25 @@
           </avl-card-content>
 
           <avl-card-footer class="home__card-footer">
-            <div *ngIf="product.product.type === productTypes.freeInvestmentLoan">
-              <p>Has pagado {{product.summary.paid_installments}} de {{product.summary.total_installments}} cuotas</p>
+            <div class="ava-content--regular" *ngIf="product.product.type === productTypes.freeInvestmentLoan">
+              <div>Has pagado: {{product.summary.paid_installments}} de {{product.summary.total_installments}} cuotas</div>
               <avl-progress-bar [percentage]="(product.summary.paid_installments/product.summary.total_installments) * 100" [height]="10" [width]="'auto'">
               </avl-progress-bar>
+              <br/><br/>
             </div>
 
             <div *ngIf="product.product.type === productTypes.creditCard">
 
               <div *ngIf="product.summary.franchise === 'VISA'">
-                <div class="ava-button--blue"> PAGAR </div>
-
+                <div class="ava-button--blue"> PAGAR</div>
               </div>
 
-              <div *ngIf="product.summary.franchise === 'MASTERCARD'">
-                <p>total gastado: {{product.summary.total_due | currency}}</p>
-                <avl-progress-bar [percentage]="(product.summary.total_due/product.summary.credit_line) * 100" [height]="10" [width]="'auto'">
+              <div class="ava-content--regular" *ngIf="product.summary.franchise === 'MASTERCARD'">
+                <div>Total gastado: {{product.summary.total_due | currency}}</div>
+                <avl-progress-bar [percentage]="(product.summary.total_due/product.summary.credit_line) * 100"
+                                  [height]="10" [width]="'auto'">
                 </avl-progress-bar>
+                <br/><br/>
               </div>
 
             </div>

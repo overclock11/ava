@@ -45,8 +45,8 @@
     height: 100%;
   }
 
-  &__card-header{
-    height: 135px;
+  &__card-header {
+    max-height: 135px;
     display: block;
   }
   &__card-content {
@@ -55,8 +55,8 @@
   }
 
   &__card-footer{
-    height: 50px;
-    display: block;
+   /* height: 50px;
+    display: block;*/
   }
 
   &__menu{
