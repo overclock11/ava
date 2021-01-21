@@ -1,4 +1,4 @@
-# Ava 
+# Ava :gem: 
 
 Algunas cosas a destacar de la funcionalidad de aplicación:
 
@@ -29,5 +29,5 @@ reutilización de ellos en esta y otras apps ya que generalmente las aplicacione
 Configuración para levantar la aplicación.
 
 1. Instalar paquetes NPM `npm i`
-2. Generar librería `ng build aval-styles --watch`
-3. Levantar servidor de desarrollo ` ng serve `
+2. Generar librería `ng build aval-styles` si se van hacer cambios usar el flag `--watch`
+3. Levantar servidor de desarrollo ` ng serve `e ir a localhost:4200
